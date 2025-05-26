@@ -22,8 +22,8 @@ const Navbar: React.FC = () => {
   const isLoggedIn = false;
 
   return (
-    <nav className="bg-white shadow-md">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className=" bg-white shadow-md">
+      <div className="w-full container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               className="md:hidden ml-2 text-gray-700 hover:text-blue-600 transition-colors duration-200"
-              onClick={() => setMenuOpen((prev) => !prev)}
+              onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
               {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
@@ -99,20 +99,25 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Nav Links */}
         {menuOpen && (
-          <div className="md:hidden flex flex-col space-y-2 mt-2">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                className={({ isActive }) =>
-                  `block text-gray-700 font-medium transition-colors duration-200 hover:text-blue-600
-                  ${isActive ? "text-blue-600" : ""}`
-                }
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.name}
-              </NavLink>
-            ))}
+          <div className="md:hidden bg-white shadow-md mt-2">
+            <div className="container mx-auto px-4 space-y-2">
+              {navLinks.map((link) => (
+                <NavLink
+                  className={({ isActive }) =>
+                    `block text-sm font-medium py-2
+                  ${
+                    isActive
+                      ? "text-blue-600"
+                      : "text-gray-700 hover:text-gray-900"
+                  }`
+                  }
+                  key={link.name}
+                  to={link.path}
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
           </div>
         )}
       </div>
