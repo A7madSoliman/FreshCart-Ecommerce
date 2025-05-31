@@ -4,13 +4,14 @@ import Layout from "./Components/Layout";
 import Signin from "./Pages/Signin";
 import Register from "./Pages/Register";
 import Notfound from "./Pages/Notfound";
+import Home from "./Pages/Home";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<h1>Home</h1>} />
+          <Route index element={<Home />} />
           <Route path="products" element={<h1>Products</h1>} />
           <Route path="categories" element={<h1>Categories</h1>} />
           <Route path="brands" element={<h1>Brands</h1>} />
